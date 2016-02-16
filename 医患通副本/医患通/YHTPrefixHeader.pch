@@ -1,0 +1,52 @@
+//
+//  YHTPrefixHeader.pch
+//  医患通
+//
+//  Created by 张耀华 on 16/1/11.
+//  Copyright © 2016年 禾医科技. All rights reserved.
+//
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#ifdef DEBUG // 调试状态, 打开LOG功能
+#define YHTLog(...) NSLog(__VA_ARGS__)
+#else // 发布状态, 关闭LOG功能
+#define YHTLog(...)
+#endif
+
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+
+#define KNOTIFICATION_LOGINCHANGE @"loginStateChange"
+#define KNOTIFICATION_CHAT @"chat"
+#define KNOTIFICATION_SETTINGCHANGE @"settingChange"
+
+#define CHATVIEWBACKGROUNDCOLOR [UIColor colorWithRed:0.936 green:0.932 blue:0.907 alpha:1]
+
+#define kDefaultAppKey @"hykjhxid#hykjchatapp"
+#define kDefaultCustomerName @"kefu"
+#import "UIImageView+WebCache.h"
+#import "UIView+Extension.h"
+#import "MJExtension.h"
+#import "MBProgressHUD.h"
+#import "MJRefresh.h"
+#import "Masonry.h"
+#import "AppDelegate.h"
+#import "YHTUserDefault.h"
+#import "YHTHttpRequestManager.h"
+// 屏幕宽高
+#define YHTScreenW [UIScreen mainScreen].bounds.size.width
+#define YHTScreenH [UIScreen mainScreen].bounds.size.height
+// 图片
+#define YHTImage(name) [UIImage imageNamed:name]
+// 渲染保持原颜色信息图片
+#define YHTOriginalImage(name) [YHTImage(name) imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+
+// 字体
+#define YHTFont(size) [UIFont systemFontOfSize:size]
+
+#define YHTJsonParserWithData(data) [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil]
+#endif
